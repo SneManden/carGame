@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CarGame revisited</title>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div style="height:1000px;"></div>
+        <!-- Dependencies -->
+        <script src="lib/pixi.dev.js"></script>
+        <!-- Game scripts -->
+        <script src="js/car.js"></script>
+        <script src="js/game.js"></script>
+        <script src="js/back.js"></script>
+        <script src="js/ai.js"></script>
+        <script>
+        // shim layer with setTimeout fallback
+        window.requestAnimFrame = (function(){
+          return  window.requestAnimationFrame       ||
+                  window.webkitRequestAnimationFrame ||
+                  window.mozRequestAnimationFrame    ||
+                  function( callback ){
+                    window.setTimeout(callback, 1000 / 60);
+                  };
+        })();
+
+        var game;
+        window.onload = function() {
+            game = new Game(640, 480);
+            game.init();
+        }
+        </script>
+    </body>
+</html>
